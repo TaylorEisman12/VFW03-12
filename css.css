@@ -12,3 +12,13 @@ h1 {
 	padding-left: 75px;
 }
 
+h2{
+	color: silver;
+	font-size: medium;
+	font-weight: bold;
+}
+
+body {
+	background-color: gray;
+}
+
