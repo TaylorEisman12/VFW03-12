@@ -22,3 +22,23 @@ body {
 	background-color: gray;
 }
 
+p {
+	color: silver;
+	font-size: small;
+	background-color: navy;
+}
+
+form {
+	color: silver;
+	font-size: medium;
+	font-weight: bold;
+	text-align: left;
+	padding: 5px;
+	background-color: navy;
+}
+
+legend {
+	color: silver;
+	font-size: large;
+}
+
