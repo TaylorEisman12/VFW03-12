@@ -3,23 +3,28 @@
 /* Project 2 */
 
 header {
-  background-color: navy;
+	background-color: navy;
+	margin: 0px;
+	border: 1px dashed black;
 }
 
 h1 {
 	color: silver;
 	font-weight: bold;
 	padding-left: 75px;
+	margin: 0px;
 }
 
 h2{
 	color: silver;
 	font-size: medium;
 	font-weight: bold;
+	margin: 0px;
 }
 
 body {
 	background-color: gray;
+	font-family: Arial, Times, serif;
 }
 
 p {
@@ -35,16 +40,24 @@ form {
 	text-align: left;
 	padding: 5px;
 	background-color: navy;
+	border: 1px dashed black;
+	margin: 0px;
 }
 
 legend {
 	color: silver;
-	font-size: large;
+	font-size: larger;
 }
 
 a {
 	color: blue;
 	font-size: medium;
-	padding-right: 18px;
+	padding-right: 10px;
 	padding-left: 10px;
+}
+
+span {
+	color: red;
+	font-size: smaller;
+	font-style: italic;
 }
