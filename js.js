@@ -64,6 +64,29 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	}
 	
+	function getData(){
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for(var i=0, len=localStoarge.length; i<len;i++){
+			var makeli = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeLi.appendChild(makeSubList);
+			for(var n in obj){
+				var makeSubli = document.createElement('li');
+				makeSubList.appendChild(makeSubli);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubli.innerHTML = optSubText;
+			}
+		}
+	}
+	
 	var billCategories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
 		payByValue,
 		pastDueValue = "No";
