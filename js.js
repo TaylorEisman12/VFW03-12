@@ -42,6 +42,27 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function toggleControls(n){
+		switch(n){
+			case "on";
+				$('billDetails').style.display = "none";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "none";
+				$('addNew').style.display = "inline";
+				
+				break;
+			case "off";
+				$('billDetails').style.display = "block";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "inline";
+				$('addNew').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
+	
 	function storeData(){
 		var id			= Math.floor(Math.random()*100000001);
 		
@@ -70,6 +91,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('items').stlye.display = "display";
 		for(var i=0, len=localStoarge.length; i<len;i++){
 			var makeli = document.createElement('li');
 			makeList.appendChild(makeli);
