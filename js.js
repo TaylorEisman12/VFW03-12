@@ -13,11 +13,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		var formTag = document.getElementsByTagName("form"),
 			selectLi = $('select'),
 			makeSelect = document.createElement('select');
-			makeSelect.setAttribute("id", "category");
+			makeSelect.setAttribute("id", "categories");
 			
-		for (var i=0, j=categories.length; i<j; i++){
+		for(var i=0, j=billCategories.length; i<j; i++){
 			var makeOption = document.createElement('option');
-			var optText = categories[i];
+			var optText = billCategories[i];
 			makeOption.setAttribute("value", optText);
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
@@ -26,21 +26,30 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getSelectedRadio(){
-		var radios = document.form[0].payBy;
-		for (var i=0; i<radios.length; i++){
+		var radios = document.forms[0].payBy;
+		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 			payByValue = radios[i].value;
 			}
 		}
 	}
 	
-	
+	function getCheckboxValue(){
+		if($('pastDue').checked){
+			pastDueValue = $('pastDue').value;
+		}else{
+			pastDueValue = "No"
+		}
+	}
 	
 	function storeData(){
 		var id			= Math.floor(Math.random()*100000001);
 		
-		var item				= ();
-			item.category			= ["Category: ", $('category').value];
+		getSelecetedRadio();
+		getCheckboxValue();
+		
+		var item					= {};
+			item.category			= ["Category: ", $('categories').value];
 			item.compName			= ["Company Name: ", $('compName').value];
 			item.compEmail			= ["Company Email: ", $('compEmail').value];
 			item.compWeb			= ["Company Website: ", $('compWeb').value];
@@ -51,12 +60,13 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.notes				= ["Notes: ", $('notes').value];
 		
 		localStorage.setItem(id, JSON.stringify(item));
-		alert("Bill Saved.");
+		alert("Bill Saved!");
 	
 	}
 	
-	var categories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
-		payByValue;
+	var billCategories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
+		payByValue,
+		pastDueValue = "No";
 	
 	makeCats();
 	
