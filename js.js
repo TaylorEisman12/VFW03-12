@@ -86,6 +86,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getData(){
+		toggleControls("on");
+		if(localStorage.length === 0){
+			alert("There is no Local Storage.");
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
@@ -109,6 +113,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("No data to clear.");
+		}else{
+			localStorage.clear();
+			alert("All Bills are deleted");
+			window.location.reload();
+			return false;
+		}
+	}
+	
 	var billCategories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
 		payByValue,
 		pastDueValue = "No";
@@ -122,4 +137,4 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 
-});
+)};
