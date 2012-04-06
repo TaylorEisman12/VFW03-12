@@ -25,6 +25,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	}
 	
+	function getSelectedRadio(){
+		var radios = document.form[0].payBy;
+		for (var i=0; i<radios.length; i++){
+			if(radios[i].checked){
+			payByValue = radios[i].value;
+			}
+		}
+	}
+	
+	
+	
 	function storeData(){
 		var id			= Math.floor(Math.random()*100000001);
 		
@@ -44,7 +55,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	}
 	
-	var categories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"];
+	var categories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
+		payByValue;
 	
 	makeCats();
 	
