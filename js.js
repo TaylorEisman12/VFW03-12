@@ -49,7 +49,6 @@ window.addEventListener("DOMContentLoaded", function(){
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "none";
 				$('addNew').style.display = "inline";
-				
 				break;
 			case "off";
 				$('billDetails').style.display = "block";
@@ -137,4 +136,4 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 
-)};
+});
