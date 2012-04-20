@@ -179,6 +179,50 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function validate(e){
+		var getCategory = $('category');
+		var getCompName = $('compName');
+		var getCompEmail = $('compEmail');
+		
+		errMsg.innerHTML = "";
+		getCategory.style.border = "1px solid black";
+		getCompName.style.border = "1px solid black";
+		getCompEmail.style.border = "1px solid black";
+		
+		var messageAry = [];
+		
+		if(getCategory.value === "-- Category --"){
+			var categoryError = "Please choose a category.";
+			getCategory.style.border = "1px solid red";
+			messageAry.push(categoryError);
+		}
+		
+		if(getCompName.value === ""){
+			var compNameError = "Please enter a Company Name.";
+			getCompName.style.border = "1px solid red";
+			messageAry.push(compNameError);
+		}
+		
+		var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3}))+$/;
+		if(!(re.exec(getCompEmail.value))){
+			var compEmailError = "Please enter a valid email address.";
+			getCompEmail.style.border = "1px solid red";
+			messageAry.push(compEmailError);
+		}
+		
+		if(messageAry.length >= 1){
+			for(var i=0, j=messageAry.length; i < j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		}else{
+			storeData(this.key);
+		}
+	}
+	
 	var billCategories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
 		payByValue,
 		pastDueValue = "No";
