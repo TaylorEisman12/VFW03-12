@@ -50,24 +50,10 @@ legend {
 }
 
 
-a {
-	color: blue;
-	font-size: medium;
-	padding-right: 10px;
-	padding-left: 10px;
-}
-
-a.visited {
-	color: red;
-}
-
-a.hover{
-	color: gray;
-}
-
-a.active{
-	color: black;
-}
+a.link{color: blue;}
+a.visited{color: red;}
+a.hover{color: gray;}
+a.active{color: black;}
 
 
 span {
