@@ -1,6 +1,6 @@
 // Taylor Eisman
 // VFW 03/12
-// Project 2
+// Project 3
 
 window.addEventListener("DOMContentLoaded", function(){
 
@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var formTag = document.getElementsByTagName("form"),
 			selectLi = $('select'),
 			makeSelect = document.createElement('select');
-			makeSelect.setAttribute("id", "categories");
+			makeSelect.setAttribute("id", "categories");         
 			
 		for(var i=0, j=billCategories.length; i<j; i++){
 			var makeOption = document.createElement('option');
@@ -44,13 +44,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function toggleControls(n){
 		switch(n){
-			case "on";
+			case "on":
 				$('billDetails').style.display = "none";
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "none";
 				$('addNew').style.display = "inline";
 				break;
-			case "off";
+			case "off":
 				$('billDetails').style.display = "block";
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "inline";
@@ -61,11 +61,14 @@ window.addEventListener("DOMContentLoaded", function(){
 				return false;
 		}
 	}
-	
-	function storeData(){
-		var id			= Math.floor(Math.random()*100000001);
-		
-		getSelecetedRadio();
+
+	function storeData(key){
+		if(!key){
+			var id			= Math.floor(Math.random()*100000001);
+		}else{
+			id = key;
+		}
+		getSelectedRadio();
 		getCheckboxValue();
 		
 		var item					= {};
@@ -83,7 +86,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Bill Saved!");
 	
 	}
-	
+
 	function getData(){
 		toggleControls("on");
 		if(localStorage.length === 0){
@@ -114,6 +117,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeItemLinks(localStorage.key(i), linksLi);
 		}
 	}
+
 	function makeItemLinks(key, linksLi){
 		var editLink = document.createElement('a');
 		editLink.href = "#";
@@ -130,11 +134,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Bill";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
-	
+
 	function editItem(){
 		var value = localStorage.getItem(this.key);
 		var item = JSON.parse(value);
@@ -178,7 +182,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			alert("Bill was not deleted.");
 		}
 	}
-
+	
 	function clearLocal(){
 		if(localStorage.length === 0){
 			alert("No data to clear.");
@@ -189,7 +193,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
-	
+
 	function validate(e){
 		var getCategory = $('category');
 		var getCompName = $('compName');
@@ -236,7 +240,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	var billCategories = ["-- Category --", "Cell Phone", "Car", "Rent", "Cable"],
 		payByValue,
-		pastDueValue = "No";
+		pastDueValue = "No",
+		errMsg = $('errors');
 	
 	makeCats();
 	
@@ -245,6 +250,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 
 });
