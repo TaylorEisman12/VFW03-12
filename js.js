@@ -135,6 +135,39 @@ window.addEventListener("DOMContentLoaded", function(){
 		linksLi.appendChild(deleteLink);
 	}
 	
+	function editItem(){
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		toggleControls("off");
+		
+		$('category').value = item.category[1];
+		$('compName').value = item.compName[1];
+		$('compEmail').value = item.compEmail[1];
+		$('compWeb').value = item.compWeb[1];
+		var radios = document.forms[0].payBy;
+		for(var i=0; i<radios.length; i++){
+			if(radios[i].value == "Internet" && item.payBy[1] == "Internet"){
+				radios[i].setAttribute("checked", "checked");
+			}else if(radios[i].value == "Mail" && item.payBy[1] == "Mail"){
+				radios[i].setAttribute("checked", "checked");
+			}
+		}
+		if(item.pastDue[1] == "Yes"){
+			$('pastDue').setAttribute("checked", "checked");
+		}
+		$('budgetPercent').value = item.budgetPercent[1];
+		$('date').value = item.date[1];
+		$('notes').value = item.notes[1];
+		
+		save.removeEventListener("click", storeData);
+		$('submit').value = "Edit Bill";
+		var editSubmit = $('submit');
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+		
+	}
+	
 	function clearLocal(){
 		if(localStorage.length === 0){
 			alert("No data to clear.");
