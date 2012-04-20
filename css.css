@@ -1,6 +1,6 @@
 /* Taylor Eisman */
 /* VFW 03/12 */
-/* Project 2 */
+/* Project 3 */
 
 header {
 	background-color: navy;
@@ -33,6 +33,26 @@ p {
 	background-color: navy;
 }
 
+div #items {
+	background: blue;
+	border: black;
+}
+
+body > p {
+	color: black;
+	font-size: xx-small;
+	font-style: italic;
+}
+.errors{
+	background: maroon;
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+}
+
+[type]. textarea {border: 1px solid navy;}
+[type="radios"] {border: none; width: inherit;}
+
 form {
 	color: silver;
 	font-size: medium;
@@ -49,12 +69,10 @@ legend {
 	font-size: larger;
 }
 
-
 a.link{color: blue;}
 a.visited{color: red;}
 a.hover{color: gray;}
 a.active{color: black;}
-
 
 span {
 	color: red;
